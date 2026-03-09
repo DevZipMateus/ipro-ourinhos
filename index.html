@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IPro Ourinhos — Especialistas Apple</title>
+  <meta name="description" content="Assistência técnica especializada em iPhones e Apple Watch em Ourinhos. Troca de tela, bateria, vidro traseiro e muito mais. iPhones para revenda.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ===== VARIABLES ===== */
+    :root {
+      --black:       #0A0A0A;
+      --black-soft:  #1C1C1E;
+      --black-card:  #161618;
+      --white:       #FFFFFF;
+      --gray-100:    #F5F5F7;
+      --gray-200:    #E8E8ED;
+      --gray-400:    #AEAEB2;
+      --gray-600:    #86868B;
+      --gray-800:    #3A3A3C;
+      --blue:        #0071E3;
+      --blue-hover:  #0077ED;
+      --blue-glow:   rgba(0, 113, 227, 0.18);
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: 64px;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10, 10, 10, 0.88);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .header-logo img { height: 38px; width: auto; display: block; }
+
+    nav { display: flex; align-items: center; gap: 28px; }
+    nav a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: #fff; }
+    .nav-cta {
+      background: var(--blue) !important;
+      color: #fff !important;
+      padding: 7px 18px;
+      border-radius: 980px;
+      font-weight: 500 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--blue-hover) !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    #navMenu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: rgba(10,10,10,0.97);
+      backdrop-filter: blur(20px);
+      padding: 16px 24px 24px;
+      flex-direction: column;
+      z-index: 999;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    #navMenu.open { display: flex; }
+    #navMenu a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 400;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: color 0.2s;
+    }
+    #navMenu a:last-child { border-bottom: none; }
+    #navMenu a:hover { color: #fff; }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 24px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, var(--blue-glow) 0%, transparent 65%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-dots {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      width: 200px;
+      max-width: 55vw;
+      margin-bottom: 36px;
+      position: relative;
+      filter: drop-shadow(0 0 40px rgba(0,113,227,0.25));
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(0, 113, 227, 0.12);
+      border: 1px solid rgba(0, 113, 227, 0.28);
+      color: #64ADFF;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 980px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .badge-dot {
+      width: 6px; height: 6px;
+      background: #0071E3;
+      border-radius: 50%;
+      animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-title {
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.035em;
+      line-height: 1.06;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .hero-title .accent { color: var(--blue); }
+
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 20px);
+      color: rgba(255,255,255,0.48);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 44px;
+      font-weight: 400;
+      position: relative;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue);
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 14px 28px;
+      border-radius: 980px;
+      letter-spacing: -0.01em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--blue-hover); transform: translateY(-1px); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 400;
+      padding: 14px 28px;
+      border-radius: 980px;
+      border: 1px solid rgba(255,255,255,0.18);
+      transition: all 0.2s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.45); color: #fff; }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.35;
+    }
+    .scroll-hint span {
+      font-size: 10px;
+      color: #fff;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .scroll-arrow {
+      width: 16px; height: 16px;
+      border-right: 1.5px solid #fff;
+      border-bottom: 1.5px solid #fff;
+      transform: rotate(45deg);
+      animation: arrowDown 1.6s ease-in-out infinite;
+    }
+    @keyframes arrowDown {
+      0%, 100% { transform: rotate(45deg) translate(0,0); opacity: 1; }
+      50% { transform: rotate(45deg) translate(3px,3px); opacity: 0.4; }
+    }
+
+    /* ===== STATS BAR ===== */
+    .stats-bar {
+      background: var(--black-soft);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 36px 24px;
+    }
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .stat-num em { color: var(--blue); font-style: normal; }
+    .stat-label {
+      font-size: 13px;
+      color: var(--gray-600);
+      margin-top: 6px;
+      font-weight: 400;
+    }
+
+    /* ===== SECTION BASE ===== */
+    .section-eye {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+    .section-h {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.1;
+    }
+    .section-h.on-dark { color: #fff; }
+    .section-h.on-light { color: var(--black); }
+    .section-p {
+      font-size: 17px;
+      line-height: 1.65;
+      margin-top: 14px;
+      max-width: 560px;
+    }
+    .section-p.on-dark { color: rgba(255,255,255,0.48); }
+    .section-p.on-light { color: var(--gray-600); }
+    .sec-head { text-align: center; margin-bottom: 64px; }
+    .sec-head .section-p { margin-left: auto; margin-right: auto; }
+
+    /* ===== SERVICES ===== */
+    #servicos {
+      background: var(--black);
+      padding: 100px 24px;
+    }
+    .services-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .svc-card {
+      background: var(--black-card);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 28px;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .svc-card:hover {
+      border-color: rgba(0, 113, 227, 0.45);
+      transform: translateY(-3px);
+    }
+    .svc-icon {
+      width: 46px; height: 46px;
+      background: rgba(0, 113, 227, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+    .svc-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+    .svc-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.42);
+      line-height: 1.6;
+    }
+
+    /* ===== ABOUT ===== */
+    #sobre {
+      background: var(--gray-100);
+      padding: 100px 24px;
+    }
+    .about-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .about-left .section-eye,
+    .about-left .section-h { text-align: left; }
+    .about-story {
+      margin-top: 24px;
+      font-size: 17px;
+      color: var(--gray-600);
+      line-height: 1.72;
+    }
+    .about-story strong { color: var(--black); font-weight: 600; }
+    .about-story p + p { margin-top: 14px; }
+    .timeline {
+      display: flex;
+      gap: 20px;
+      margin-top: 36px;
+    }
+    .tl-item { flex: 1; }
+    .tl-year {
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: -0.04em;
+    }
+    .tl-desc {
+      font-size: 12px;
+      color: var(--gray-600);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+    .mv-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 36px;
+    }
+    .mv-card {
+      background: var(--black);
+      border-radius: 16px;
+      padding: 22px;
+    }
+    .mv-card.blue { background: var(--blue); }
+    .mv-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+    }
+    .mv-text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.6;
+    }
+
+    /* Values */
+    .about-right .section-eye { text-align: left; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .val-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.05);
+    }
+    .val-icon { font-size: 22px; margin-bottom: 8px; }
+    .val-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: -0.01em;
+    }
+    .val-desc {
+      font-size: 12px;
+      color: var(--gray-600);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+    .val-card.full { grid-column: span 2; }
+
+    /* ===== PRODUCTS ===== */
+    #produtos {
+      background: var(--white);
+      padding: 100px 24px;
+    }
+    .products-wrap { max-width: 1100px; margin: 0 auto; }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .tab {
+      padding: 9px 20px;
+      border-radius: 980px;
+      border: 1px solid var(--gray-200);
+      background: transparent;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gray-600);
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .tab.active { background: var(--black); color: #fff; border-color: var(--black); }
+    .tab:hover:not(.active) { border-color: var(--gray-400); color: var(--black); }
+
+    .iphones-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 14px;
+    }
+    .iphones-grid.hidden { display: none; }
+
+    .iphone-card {
+      background: var(--gray-100);
+      border-radius: 20px;
+      padding: 24px 16px 18px;
+      text-align: center;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .iphone-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    }
+    .phone-badge {
+      position: absolute;
+      top: 12px; right: 12px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 980px;
+      letter-spacing: 0.02em;
+    }
+    .phone-img {
+      width: 72px;
+      height: 108px;
+      object-fit: contain;
+      margin: 0 auto 14px;
+      display: block;
+    }
+    .phone-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: -0.01em;
+    }
+    .phone-storage {
+      font-size: 12px;
+      color: var(--gray-600);
+      margin-top: 4px;
+    }
+    .phone-cta {
+      display: block;
+      margin-top: 14px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 0;
+      border-radius: 980px;
+      text-decoration: none;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+    .phone-cta:hover { background: var(--blue-hover); }
+
+    .parts-grid {
+      display: none;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 14px;
+    }
+    .parts-grid.visible { display: grid; }
+
+    .part-card {
+      background: var(--gray-100);
+      border-radius: 20px;
+      padding: 28px 20px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .part-card:hover { transform: translateY(-3px); }
+    .part-ico { font-size: 36px; margin-bottom: 12px; }
+    .part-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: -0.01em;
+    }
+    .part-desc {
+      font-size: 12px;
+      color: var(--gray-600);
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    .products-cta-row {
+      text-align: center;
+      margin-top: 44px;
+    }
+
+    /* ===== CONTACT ===== */
+    #contato {
+      background: var(--black);
+      padding: 100px 24px;
+    }
+    .contact-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 48px;
+      text-align: left;
+    }
+    .contact-card {
+      background: var(--black-soft);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 20px 22px;
+    }
+    .contact-card.full { grid-column: span 2; }
+    .cc-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--gray-600);
+      margin-bottom: 8px;
+    }
+    .cc-value {
+      font-size: 15px;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1.5;
+    }
+    .cc-value a { color: var(--blue); text-decoration: none; }
+    .cc-value a:hover { text-decoration: underline; }
+
+    .wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #22C55E;
+      color: #fff;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 600;
+      padding: 16px 36px;
+      border-radius: 980px;
+      margin-top: 48px;
+      letter-spacing: -0.01em;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 24px rgba(34, 197, 94, 0.3);
+    }
+    .wa-btn:hover { background: #16A34A; transform: translateY(-2px); }
+
+    .ig-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 14px;
+      margin-top: 20px;
+      transition: color 0.2s;
+    }
+    .ig-link:hover { color: rgba(255,255,255,0.8); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #000;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .footer-txt {
+      font-size: 12px;
+      color: rgba(255,255,255,0.28);
+      line-height: 1.8;
+    }
+
+    /* ===== WHATSAPP FLOAT ===== */
+    .wa-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 900;
+      width: 56px; height: 56px;
+      background: #22C55E;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 22px rgba(34,197,94,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .wa-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 30px rgba(34,197,94,0.55);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1023px) {
+      .about-wrap { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+
+      .mv-cards { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-card.full { grid-column: span 1; }
+      .iphones-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+    }
+
+    @media (max-width: 480px) {
+      .values-grid { grid-template-columns: 1fr; }
+      .val-card.full { grid-column: span 1; }
+      .mv-cards { grid-template-columns: 1fr; }
+      .timeline { gap: 14px; }
+      .stats-inner { gap: 28px; }
+      header { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <a href="#hero" class="header-logo">
+    <img src="images/logo.png" alt="IPro Ourinhos">
+  </a>
+  <nav>
+    <a href="#servicos">Serviços</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#contato" class="nav-cta">WhatsApp</a>
+  </nav>
+  <button class="hamburger" id="menuBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav id="navMenu">
+  <a href="#servicos" onclick="closeMenu()">Serviços</a>
+  <a href="#produtos" onclick="closeMenu()">Produtos</a>
+  <a href="#sobre" onclick="closeMenu()">Sobre</a>
+  <a href="#contato" onclick="closeMenu()">Contato</a>
+  <a href="https://wa.me/5514XXXXXXXXX" target="_blank" onclick="closeMenu()" style="color:#22C55E;">WhatsApp</a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-glow"></div>
+
+  <img src="images/logo.png" alt="IPro Ourinhos" class="hero-logo">
+
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    Especialistas Apple desde 2020
+  </div>
+
+  <h1 class="hero-title">
+    Assistência técnica<br><span class="accent">que você pode confiar</span>
+  </h1>
+  <p class="hero-sub">
+    Serviços de qualidade para iPhones e Apple Watch. Peças certificadas, garantia e atendimento especializado em Ourinhos.
+  </p>
+
+  <div class="hero-btns">
+    <a href="https://wa.me/5514XXXXXXXXX" class="btn-primary" target="_blank">
+      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.09.543 4.054 1.49 5.763L.02 23.5l5.891-1.546A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.657-.502-5.178-1.379l-.371-.22-3.496.917.935-3.41-.241-.384A9.936 9.936 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      Fale no WhatsApp
+    </a>
+    <a href="#servicos" class="btn-ghost">Ver serviços</a>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">+<em>8</em> anos</div>
+      <div class="stat-label">no mercado</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num"><em>100%</em></div>
+      <div class="stat-label">foco em Apple</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">+<em>500</em></div>
+      <div class="stat-label">clientes atendidos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num"><em>90</em> dias</div>
+      <div class="stat-label">de garantia</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SERVICES ===== -->
+<section id="servicos">
+  <div class="sec-head">
+    <p class="section-eye">O que fazemos</p>
+    <h2 class="section-h on-dark">Serviços</h2>
+    <p class="section-p on-dark">Realizamos todos os tipos de manutenção em iPhones com peças de qualidade e garantia de 90 dias.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="svc-card">
+      <div class="svc-icon">📱</div>
+      <div class="svc-name">Troca de Tela</div>
+      <div class="svc-desc">Display original ou premium. Restauramos a clareza e a sensibilidade precisa do touch.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🔋</div>
+      <div class="svc-name">Troca de Bateria</div>
+      <div class="svc-desc">Baterias certificadas para máxima duração. Seu iPhone voltando a durar o dia todo.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🪟</div>
+      <div class="svc-name">Troca de Vidro Traseiro</div>
+      <div class="svc-desc">Recuperamos a aparência original com técnica de precisão. Vidros de altíssima qualidade.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">⚡</div>
+      <div class="svc-name">Troca de Flex</div>
+      <div class="svc-desc">Substituição de cabos flex para restaurar funções como botões, câmera e áudio.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">📦</div>
+      <div class="svc-name">Tampa e Carcaça</div>
+      <div class="svc-desc">Troca de tampas e carcaças. Devolvemos o visual impecável ao seu dispositivo.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">✨</div>
+      <div class="svc-name">Polimento</div>
+      <div class="svc-desc">Polimento especializado para remover riscos e devolver o brilho original ao aparelho.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">👁️</div>
+      <div class="svc-name">Face ID</div>
+      <div class="svc-desc">Reparo e restauração do sistema de reconhecimento facial com segurança e precisão.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🔬</div>
+      <div class="svc-name">Laser na Cola</div>
+      <div class="svc-desc">Técnica avançada de laser para remoção de cola da tampa traseira com máxima precisão.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">⌚</div>
+      <div class="svc-name">Apple Watch</div>
+      <div class="svc-desc">Manutenção completa e peças para Apple Watch. Cobertura total para seu wearable.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="sobre">
+  <div class="about-wrap">
+    <!-- LEFT -->
+    <div class="about-left">
+      <p class="section-eye">Nossa história</p>
+      <h2 class="section-h on-light">Referência em<br>Apple em Ourinhos</h2>
+      <div class="about-story">
+        <p>Nossa história começa em <strong>2017</strong>, quando iniciamos com o objetivo de oferecer soluções e inovações para nossos clientes.</p>
+        <p>Em <strong>2020</strong>, tomamos uma decisão estratégica: nos tornarmos especialistas exclusivos em dispositivos Apple — conquistando nossa posição como referência no segmento em Ourinhos e região.</p>
+        <p>Atendemos consumidores finais, lojistas, atacadistas e revendedores, com qualidade e ética em cada serviço prestado.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">2017</div>
+          <div class="tl-desc">Fundação da empresa</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2020</div>
+          <div class="tl-desc">Especialização Apple</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2026</div>
+          <div class="tl-desc">Referência na região</div>
+        </div>
+      </div>
+      <div class="mv-cards">
+        <div class="mv-card">
+          <div class="mv-label">Missão</div>
+          <div class="mv-text">Entregar produtos e serviços de qualidade com excelência, ética e compromisso.</div>
+        </div>
+        <div class="mv-card blue">
+          <div class="mv-label">Visão</div>
+          <div class="mv-text">Ser referência pela inovação, confiança e impacto positivo na vida das pessoas.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="about-right">
+      <p class="section-eye">Nossos valores</p>
+      <div class="values-grid">
+        <div class="val-card">
+          <div class="val-icon">🤝</div>
+          <div class="val-name">Ética e Transparência</div>
+          <div class="val-desc">Honestidade em cada atendimento e negociação.</div>
+        </div>
+        <div class="val-card">
+          <div class="val-icon">💙</div>
+          <div class="val-name">Compromisso</div>
+          <div class="val-desc">O cliente é nossa prioridade absoluta.</div>
+        </div>
+        <div class="val-card">
+          <div class="val-icon">⭐</div>
+          <div class="val-name">Qualidade</div>
+          <div class="val-desc">Excelência em cada peça, serviço e atendimento.</div>
+        </div>
+        <div class="val-card">
+          <div class="val-icon">💡</div>
+          <div class="val-name">Inovação</div>
+          <div class="val-desc">Sempre atualizados com as melhores técnicas.</div>
+        </div>
+        <div class="val-card full">
+          <div class="val-icon">🌟</div>
+          <div class="val-name">Respeito e Responsabilidade</div>
+          <div class="val-desc">Cada cliente e dispositivo tratado com máximo cuidado.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS ===== -->
+<section id="produtos">
+  <div class="products-wrap">
+    <div class="sec-head">
+      <p class="section-eye">Para lojas e revendedores</p>
+      <h2 class="section-h on-light">Produtos</h2>
+      <p class="section-p on-light">iPhones para revenda e peças Apple. Atendemos lojistas, atacadistas e revendedores com agilidade e segurança.</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('iphones', this)">iPhones</button>
+      <button class="tab" onclick="switchTab('pecas', this)">Peças &amp; Acessórios</button>
+    </div>
+
+    <!-- iPhones -->
+    <div class="iphones-grid" id="tab-iphones">
+      <div class="iphone-card">
+        <span class="phone-badge">NOVO</span>
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-9inch-deserttitanium?wid=400&hei=600&fmt=p-jpg&qlt=80" alt="iPhone 16 Pro Max" class="phone-img" onerror="this.style.display='none'">
+        <div class="phone-name">iPhone 16 Pro Max</div>
+        <div class="phone-storage">256GB · 512GB · 1TB</div>
+        <a href="https://wa.me/5514XXXXXXXXX?text=Olá! Tenho interesse no iPhone 16 Pro Max para revenda." class="phone-cta" target="_blank">Consultar preço</a>
+      </div>
+      <div class="iphone-card">
+        <span class="phone-badge">NOVO</span>
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-3inch-blacktitanium?wid=400&hei=600&fmt=p-jpg&qlt=80" alt="iPhone 16 Pro" class="phone-img" onerror="this.style.display='none'">
+        <div class="phone-name">iPhone 16 Pro</div>
+        <div class="phone-storage">128GB · 256GB · 512GB</div>
+        <a href="https://wa.me/5514XXXXXXXXX?text=Olá! Tenho interesse no iPhone 16 Pro para revenda." class="phone-cta" target="_blank">Consultar preço</a>
+      </div>
+      <div class="iphone-card">
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-finish-select-202409-6-1inch-black?wid=400&hei=600&fmt=p-jpg&qlt=80" alt="iPhone 16" class="phone-img" onerror="this.style.display='none'">
+        <div class="phone-name">iPhone 16</div>
+        <div class="phone-storage">128GB · 256GB · 512GB</div>
+        <a href="https://wa.me/5514XXXXXXXXX?text=Olá! Tenho interesse no iPhone 16 para revenda." class="phone-cta" target="_blank">Consultar preço</a>
+      </div>
+      <div class="iphone-card">
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=400&hei=600&fmt=p-jpg&qlt=80" alt="iPhone 15 Pro Max" class="phone-img" onerror="this.style.display='none'">
+        <div class="phone-name">iPhone 15 Pro Max</div>
+        <div class="phone-storage">256GB · 512GB · 1TB</div>
+        <a href="https://wa.me/5514XXXXXXXXX?text=Olá! Tenho interesse no iPhone 15 Pro Max para revenda." class="phone-cta" target="_blank">Consultar preço</a>
+      </div>
+      <div class="iphone-card">
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch-blacktitanium?wid=400&hei=600&fmt=p-jpg&qlt=80" alt="iPhone 15 Pro" class="phone-img" onerror="this.style.display='none'">
+        <div class="phone-name">iPhone 15 Pro</div>
+        <div class="phone-storage">128GB · 256GB · 512GB</div>
+        <a href="https://wa.me/5514XXXXXXXXX?text=Olá! Tenho interesse no iPhone 15 Pro para revenda." class="phone-cta" target="_blank">Consultar preço</a>
+      </div>
+      <div class="iphone-card">
+        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-finish-select-202209-6-7inch-deeppurple?wid=400&hei=600&fmt=p-jpg&qlt=80" alt="iPhone 14 Pro Max" class="phone-img" onerror="this.style.display='none'">
+        <div class="phone-name">iPhone 14 Pro Max</div>
+        <div class="phone-storage">128GB · 256GB · 512GB</div>
+        <a href="https://wa.me/5514XXXXXXXXX?text=Olá! Tenho interesse no iPhone 14 Pro Max para revenda." class="phone-cta" target="_blank">Consultar preço</a>
+      </div>
+    </div>
+
+    <!-- Peças -->
+    <div class="parts-grid" id="tab-pecas">
+      <div class="part-card">
+        <div class="part-ico">📱</div>
+        <div class="part-name">Telas iPhone</div>
+        <div class="part-desc">Displays originais e premium para todos os modelos de iPhone</div>
+      </div>
+      <div class="part-card">
+        <div class="part-ico">🔋</div>
+        <div class="part-name">Baterias</div>
+        <div class="part-desc">Baterias certificadas para iPhones e Apple Watch</div>
+      </div>
+      <div class="part-card">
+        <div class="part-ico">⚡</div>
+        <div class="part-name">Flex e Componentes</div>
+        <div class="part-desc">Cabos flex e peças internas para todos os modelos</div>
+      </div>
+      <div class="part-card">
+        <div class="part-ico">📦</div>
+        <div class="part-name">Tampas e Carcaças</div>
+        <div class="part-desc">Estruturas e tampas traseiras para iPhones</div>
+      </div>
+      <div class="part-card">
+        <div class="part-ico">⌚</div>
+        <div class="part-name">Peças Apple Watch</div>
+        <div class="part-desc">Componentes e peças para Apple Watch Series e Ultra</div>
+      </div>
+      <div class="part-card">
+        <div class="part-ico">🔩</div>
+        <div class="part-name">Peças em Geral</div>
+        <div class="part-desc">Amplo estoque de peças para toda linha Apple</div>
+      </div>
+    </div>
+
+    <div class="products-cta-row">
+      <a href="https://wa.me/5514XXXXXXXXX?text=Olá! Gostaria de consultar disponibilidade de produtos e peças." class="btn-primary" target="_blank">
+        Consultar disponibilidade
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contato">
+  <div class="contact-wrap">
+    <p class="section-eye">Fale conosco</p>
+    <h2 class="section-h on-dark">Entre em contato</h2>
+    <p class="section-p on-dark">Atendemos lojistas, atacadistas, revendedores e consumidores finais. Nossa equipe está pronta para te ajudar.</p>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="cc-label">Email</div>
+        <div class="cc-value"><a href="mailto:leooliveira722@gmail.com">leooliveira722@gmail.com</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="cc-label">Horário</div>
+        <div class="cc-value">Seg a Sex · 9h às 18h</div>
+      </div>
+      <div class="contact-card full">
+        <div class="cc-label">Endereço</div>
+        <div class="cc-value">Rua Alcebíades Ferreira de Moraes · Ourinhos – SP</div>
+      </div>
+    </div>
+
+    <a href="https://wa.me/5514XXXXXXXXX" class="wa-btn" target="_blank">
+      <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.09.543 4.054 1.49 5.763L.02 23.5l5.891-1.546A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.657-.502-5.178-1.379l-.371-.22-3.496.917.935-3.41-.241-.384A9.936 9.936 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      Falar no WhatsApp
+    </a>
+    <br>
+    <a href="https://www.instagram.com/ipro_ourinhos" class="ig-link" target="_blank">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+      @ipro_ourinhos
+    </a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p class="footer-txt">
+    © 2026 IPro Ourinhos · CNPJ 37.772.789/0001-09<br>
+    Rua Alcebíades Ferreira de Moraes · Ourinhos – SP · Seg a Sex, 9h às 18h
+  </p>
+</footer>
+
+<!-- WhatsApp Flutuante -->
+<a href="https://wa.me/5514XXXXXXXXX" class="wa-float" target="_blank" aria-label="WhatsApp">
+  <svg width="28" height="28" fill="#fff" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.09.543 4.054 1.49 5.763L.02 23.5l5.891-1.546A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.657-.502-5.178-1.379l-.371-.22-3.496.917.935-3.41-.241-.384A9.936 9.936 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+  </svg>
+</a>
+
+<script>
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const navMenu = document.getElementById('navMenu');
+  menuBtn.addEventListener('click', () => navMenu.classList.toggle('open'));
+  function closeMenu() { navMenu.classList.remove('open'); }
+
+  // Fechar menu ao clicar fora
+  document.addEventListener('click', (e) => {
+    if (!menuBtn.contains(e.target) && !navMenu.contains(e.target)) {
+      navMenu.classList.remove('open');
+    }
+  });
+
+  // Tab switching
+  function switchTab(tab, btn) {
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const iphones = document.getElementById('tab-iphones');
+    const pecas = document.getElementById('tab-pecas');
+    if (tab === 'iphones') {
+      iphones.classList.remove('hidden');
+      pecas.classList.remove('visible');
+    } else {
+      iphones.classList.add('hidden');
+      pecas.classList.add('visible');
+    }
+  }
+
+  // Fade-in nas seções
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.svc-card, .val-card, .iphone-card, .part-card, .contact-card, .mv-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
