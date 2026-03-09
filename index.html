@@ -483,9 +483,17 @@
         linear-gradient(rgba(255,255,255,0.93), rgba(255,255,255,0.93)),
         url('images/produtos-bg.jpg') center / cover no-repeat;
       background-attachment: fixed, fixed;
-      padding: 100px 24px;
+      padding: 0;
+      overflow: hidden;
     }
-    .products-wrap { max-width: 1100px; margin: 0 auto; }
+    .products-wrap { max-width: 100%; margin: 0; }
+    #produtos .sec-head { padding: 60px 24px 32px; }
+    #vitrine-iframe {
+      width: 100%;
+      height: calc(100vh - 143px);
+      border: none;
+      display: block;
+    }
 
     .tabs {
       display: flex;
@@ -961,95 +969,12 @@
     <div class="sec-head">
       <p class="section-eye">Para lojas e revendedores</p>
       <h2 class="section-h on-light">Produtos</h2>
-      <p class="section-p on-light">iPhones para revenda e peças Apple. Atendemos lojistas, atacadistas e revendedores com agilidade e segurança.</p>
     </div>
-
-    <div class="tabs">
-      <button class="tab active" onclick="switchTab('iphones', this)">iPhones</button>
-      <button class="tab" onclick="switchTab('pecas', this)">Peças &amp; Acessórios</button>
-    </div>
-
-    <!-- iPhones -->
-    <div class="iphones-grid" id="tab-iphones">
-      <div class="iphone-card">
-        <span class="phone-badge">NOVO</span>
-        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-9inch-deserttitanium?wid=400&hei=600&fmt=p-jpg&qlt=80" alt="iPhone 16 Pro Max" class="phone-img" onerror="this.style.display='none'">
-        <div class="phone-name">iPhone 16 Pro Max</div>
-        <div class="phone-storage">256GB · 512GB · 1TB</div>
-        <a href="https://wa.me/5514XXXXXXXXX?text=Olá! Tenho interesse no iPhone 16 Pro Max para revenda." class="phone-cta" target="_blank">Consultar preço</a>
-      </div>
-      <div class="iphone-card">
-        <span class="phone-badge">NOVO</span>
-        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-finish-select-202409-6-3inch-blacktitanium?wid=400&hei=600&fmt=p-jpg&qlt=80" alt="iPhone 16 Pro" class="phone-img" onerror="this.style.display='none'">
-        <div class="phone-name">iPhone 16 Pro</div>
-        <div class="phone-storage">128GB · 256GB · 512GB</div>
-        <a href="https://wa.me/5514XXXXXXXXX?text=Olá! Tenho interesse no iPhone 16 Pro para revenda." class="phone-cta" target="_blank">Consultar preço</a>
-      </div>
-      <div class="iphone-card">
-        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-finish-select-202409-6-1inch-black?wid=400&hei=600&fmt=p-jpg&qlt=80" alt="iPhone 16" class="phone-img" onerror="this.style.display='none'">
-        <div class="phone-name">iPhone 16</div>
-        <div class="phone-storage">128GB · 256GB · 512GB</div>
-        <a href="https://wa.me/5514XXXXXXXXX?text=Olá! Tenho interesse no iPhone 16 para revenda." class="phone-cta" target="_blank">Consultar preço</a>
-      </div>
-      <div class="iphone-card">
-        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=400&hei=600&fmt=p-jpg&qlt=80" alt="iPhone 15 Pro Max" class="phone-img" onerror="this.style.display='none'">
-        <div class="phone-name">iPhone 15 Pro Max</div>
-        <div class="phone-storage">256GB · 512GB · 1TB</div>
-        <a href="https://wa.me/5514XXXXXXXXX?text=Olá! Tenho interesse no iPhone 15 Pro Max para revenda." class="phone-cta" target="_blank">Consultar preço</a>
-      </div>
-      <div class="iphone-card">
-        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-1inch-blacktitanium?wid=400&hei=600&fmt=p-jpg&qlt=80" alt="iPhone 15 Pro" class="phone-img" onerror="this.style.display='none'">
-        <div class="phone-name">iPhone 15 Pro</div>
-        <div class="phone-storage">128GB · 256GB · 512GB</div>
-        <a href="https://wa.me/5514XXXXXXXXX?text=Olá! Tenho interesse no iPhone 15 Pro para revenda." class="phone-cta" target="_blank">Consultar preço</a>
-      </div>
-      <div class="iphone-card">
-        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-finish-select-202209-6-7inch-deeppurple?wid=400&hei=600&fmt=p-jpg&qlt=80" alt="iPhone 14 Pro Max" class="phone-img" onerror="this.style.display='none'">
-        <div class="phone-name">iPhone 14 Pro Max</div>
-        <div class="phone-storage">128GB · 256GB · 512GB</div>
-        <a href="https://wa.me/5514XXXXXXXXX?text=Olá! Tenho interesse no iPhone 14 Pro Max para revenda." class="phone-cta" target="_blank">Consultar preço</a>
-      </div>
-    </div>
-
-    <!-- Peças -->
-    <div class="parts-grid" id="tab-pecas">
-      <div class="part-card">
-        <div class="part-ico">📱</div>
-        <div class="part-name">Telas iPhone</div>
-        <div class="part-desc">Displays originais e premium para todos os modelos de iPhone</div>
-      </div>
-      <div class="part-card">
-        <div class="part-ico">🔋</div>
-        <div class="part-name">Baterias</div>
-        <div class="part-desc">Baterias certificadas para iPhones e Apple Watch</div>
-      </div>
-      <div class="part-card">
-        <div class="part-ico">⚡</div>
-        <div class="part-name">Flex e Componentes</div>
-        <div class="part-desc">Cabos flex e peças internas para todos os modelos</div>
-      </div>
-      <div class="part-card">
-        <div class="part-ico">📦</div>
-        <div class="part-name">Tampas e Carcaças</div>
-        <div class="part-desc">Estruturas e tampas traseiras para iPhones</div>
-      </div>
-      <div class="part-card">
-        <div class="part-ico">⌚</div>
-        <div class="part-name">Peças Apple Watch</div>
-        <div class="part-desc">Componentes e peças para Apple Watch Series e Ultra</div>
-      </div>
-      <div class="part-card">
-        <div class="part-ico">🔩</div>
-        <div class="part-name">Peças em Geral</div>
-        <div class="part-desc">Amplo estoque de peças para toda linha Apple</div>
-      </div>
-    </div>
-
-    <div class="products-cta-row">
-      <a href="https://wa.me/5514XXXXXXXXX?text=Olá! Gostaria de consultar disponibilidade de produtos e peças." class="btn-primary" target="_blank">
-        Consultar disponibilidade
-      </a>
-    </div>
+    <iframe
+      id="vitrine-iframe"
+      src="https://hypercell.egestor.com.br/vitrine/"
+      allowfullscreen>
+    </iframe>
   </div>
 </section>
 
@@ -1136,6 +1061,14 @@
       pecas.classList.add('visible');
     }
   }
+
+  // Iframe vitrine — altura dinâmica: 100vh - 80px (header) - 63px (badge)
+  function resizeVitrine() {
+    const iframe = document.getElementById('vitrine-iframe');
+    if (iframe) iframe.style.height = (window.innerHeight - 80 - 63) + 'px';
+  }
+  resizeVitrine();
+  window.addEventListener('resize', resizeVitrine);
 
   // Fade-in nas seções
   const observer = new IntersectionObserver((entries) => {
