@@ -131,19 +131,40 @@
     #navMenu a:last-child { border-bottom: none; }
     #navMenu a:hover { color: #fff; }
 
+    /* ===== TOPBAR ===== */
+    #topbar {
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      z-index: 998;
+      height: 36px;
+      background: rgba(0, 113, 227, 0.13);
+      border-bottom: 1px solid rgba(0, 113, 227, 0.28);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #64ADFF;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
     /* ===== HERO ===== */
     #hero {
       min-height: 100vh;
       background:
         linear-gradient(rgba(10,10,10,0.82), rgba(10,10,10,0.82)),
-        url('images/hero-bg.jpg') center / cover no-repeat;
+        url('images/hero-bg-v2.jpg') center / cover no-repeat;
       background-attachment: fixed, fixed;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 100px 24px 100px;
+      padding: 136px 24px 100px;
       position: relative;
       overflow: hidden;
     }
@@ -258,6 +279,27 @@
     }
     .btn-ghost:hover { border-color: rgba(255,255,255,0.45); color: #fff; }
 
+    .btn-orcamento {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #FF9F0A, #FF6B00);
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 980px;
+      border: none;
+      box-shadow: 0 4px 20px rgba(255,107,0,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+      letter-spacing: -0.01em;
+    }
+    .btn-orcamento:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(255,107,0,0.55);
+    }
+
     .scroll-hint {
       position: absolute;
       bottom: 36px;
@@ -351,7 +393,7 @@
     #servicos {
       background:
         linear-gradient(rgba(10,10,10,0.86), rgba(10,10,10,0.86)),
-        url('images/servicos-bg.jpg') center / cover no-repeat;
+        url('images/servicos-bg-v2.jpg') center / cover no-repeat;
       background-attachment: fixed, fixed;
       padding: 100px 24px;
     }
@@ -400,7 +442,7 @@
     #sobre {
       background:
         linear-gradient(rgba(245,245,247,0.92), rgba(245,245,247,0.92)),
-        url('images/sobre-bg.jpg') center / cover no-repeat;
+        url('images/servicos-bg-v2.jpg') center / cover no-repeat;
       background-attachment: fixed, fixed;
       padding: 100px 24px;
     }
@@ -499,7 +541,7 @@
     #produtos {
       background:
         linear-gradient(rgba(255,255,255,0.93), rgba(255,255,255,0.93)),
-        url('images/produtos-bg.jpg') center / cover no-repeat;
+        url('images/produtos-bg-v2.jpg') center / cover no-repeat;
       background-attachment: fixed, fixed;
       padding: 0;
       overflow: hidden;
@@ -636,7 +678,7 @@
     #contato {
       background:
         linear-gradient(rgba(10,10,10,0.88), rgba(10,10,10,0.88)),
-        url('images/contato-bg.jpg') center / cover no-repeat;
+        url('images/contato-bg-v2.jpg') center / cover no-repeat;
       background-attachment: fixed, fixed;
       padding: 100px 24px;
     }
@@ -754,7 +796,8 @@
       }
 
       .about-wrap { grid-template-columns: 1fr; gap: 48px; }
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: repeat(3, 1fr); }
+      .services-grid .svc-card:last-child { grid-column: auto; }
       #servicos { padding: 80px 24px; }
       #sobre    { padding: 80px 24px; }
       #contato  { padding: 80px 24px; }
@@ -769,12 +812,13 @@
       #navMenu { top: 60px; }
 
       /* Hero */
-      #hero { padding: 90px 20px 80px; }
+      #hero { padding: 126px 20px 80px; }
       .hero-logo { width: 160px; margin-bottom: 28px; }
       .hero-badge { font-size: 12px; }
       .hero-btns { flex-direction: column; align-items: center; gap: 12px; }
       .btn-primary,
-      .btn-ghost { width: 100%; max-width: 320px; justify-content: center; font-size: 15px; }
+      .btn-ghost,
+      .btn-orcamento { width: 100%; max-width: 320px; justify-content: center; font-size: 15px; }
 
       /* Stats */
       .stats-bar { padding: 28px 20px; }
@@ -783,6 +827,7 @@
       /* Serviços */
       #servicos { padding: 64px 20px; }
       .services-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .services-grid .svc-card:last-child { grid-column: span 2; }
       .svc-card { padding: 20px; }
       .sec-head { margin-bottom: 40px; }
 
@@ -816,7 +861,7 @@
       .header-logo img { height: 30px; }
 
       /* Hero */
-      #hero { padding: 80px 16px 70px; }
+      #hero { padding: 116px 16px 70px; }
       .hero-logo { width: 130px; margin-bottom: 22px; }
       .hero-badge { font-size: 11px; padding: 5px 12px; }
       .scroll-hint { display: none; }
@@ -875,7 +920,7 @@
     <a href="#servicos">Serviços</a>
     <a href="#produtos">Produtos</a>
     <a href="#sobre">Sobre</a>
-    <a href="#produtos">Consultar preços</a>
+    <a href="#produtos">Fazer orçamento</a>
     <a href="#contato" class="nav-cta">WhatsApp</a>
   </nav>
   <button class="hamburger" id="menuBtn" aria-label="Menu">
@@ -883,8 +928,13 @@
   </button>
 </header>
 
+<!-- ===== TOPBAR ===== -->
+<div id="topbar">
+  🏷️ Valores exclusivos para atacadistas e revendas
+</div>
+
 <nav id="navMenu">
-  <a href="#produtos" onclick="closeMenu()" style="background:var(--blue);color:#fff;padding:12px 20px;border-radius:12px;font-weight:600;text-align:center;margin-bottom:4px;">Consultar preços &rarr;</a>
+  <a href="#produtos" onclick="closeMenu()" style="background:var(--blue);color:#fff;padding:12px 20px;border-radius:12px;font-weight:600;text-align:center;margin-bottom:4px;">📋 Fazer orçamento agora →</a>
   <a href="#servicos" onclick="closeMenu()">Serviços</a>
   <a href="#produtos" onclick="closeMenu()">Produtos</a>
   <a href="#sobre" onclick="closeMenu()">Sobre</a>
@@ -897,10 +947,6 @@
   <div class="hero-dots"></div>
   <div class="hero-glow"></div>
 
-  <div style="position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;background:rgba(0,113,227,0.15);border:1px solid rgba(0,113,227,0.35);border-radius:980px;padding:7px 18px;margin-bottom:28px;font-size:13px;font-weight:600;color:#64ADFF;letter-spacing:0.02em;">
-    🏷️ Valores exclusivos para atacadistas e revendas
-  </div>
-
   <img src="images/logo.png" alt="IPro Ourinhos" class="hero-logo">
 
   <div class="hero-badge">
@@ -909,10 +955,10 @@
   </div>
 
   <h1 class="hero-title">
-    Assistência técnica<br>e distribuidora de iPhones<br><span class="accent">que você pode confiar</span>
+    Assistência técnica e distribuidora<br>de peças e iPhones<br><span class="accent">que você pode confiar</span>
   </h1>
   <p class="hero-sub">
-    Transparência, garantia e atendimento especializado em Ourinhos.
+    Tudo para iPhone — transparência, garantia e atendimento especializado.
   </p>
 
   <div class="hero-btns">
@@ -924,7 +970,7 @@
       Fale no WhatsApp
     </a>
     <a href="#servicos" class="btn-ghost">Ver serviços</a>
-    <a href="#produtos" class="btn-ghost">Consultar preços</a>
+    <a href="#produtos" class="btn-orcamento">📋 Fazer orçamento agora</a>
   </div>
 
   <div class="scroll-hint">
@@ -944,11 +990,11 @@
       <div class="stat-label">foco em Apple</div>
     </div>
     <div class="stat">
-      <div class="stat-num">+<em>2000</em></div>
+      <div class="stat-num">+<em>10000</em></div>
       <div class="stat-label">Placas reparadas</div>
     </div>
     <div class="stat">
-      <div class="stat-num"><em>+2000</em></div>
+      <div class="stat-num"><em>+10000</em></div>
       <div class="stat-label">Clientes satisfeitos</div>
     </div>
   </div>
@@ -1002,6 +1048,11 @@
       <div class="svc-icon">📱</div>
       <div class="svc-name">Trocas de Telas, Baterias, Flex e Carcaças</div>
       <div class="svc-desc">Substituição de peças em geral incluindo tela, bateria, câmeras, conectores, alto-falantes e outros componentes, com instalação profissional e garantia de serviço.</div>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🛒</div>
+      <div class="svc-name">Vendas de Peças</div>
+      <div class="svc-desc">Temos todas as peças para atender sua necessidade de bancada.</div>
     </div>
   </div>
 </section>
@@ -1083,10 +1134,16 @@
   <div class="products-wrap">
     <div class="sec-head">
       <p class="section-eye">Para lojas e revendedores</p>
-      <h2 class="section-h on-light">Produtos & Serviços</h2>
+      <div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:16px;">
+        <h2 class="section-h on-light" style="margin:0;">Produtos & Serviços</h2>
+        <span style="background:#FF9F0A;color:#fff;font-size:13px;font-weight:700;padding:6px 16px;border-radius:980px;letter-spacing:.03em;white-space:nowrap;">CONSULTE PRAZOS E CONDIÇÕES APÓS ENVIAR O PEDIDO DO CARRINHO PELO WHATSAPP</span>
+      </div>
       <div style="display:inline-flex;align-items:center;gap:10px;background:#1C1C1E;border-radius:14px;padding:14px 22px;margin-top:20px;text-align:left;">
-        <span style="font-size:22px;">🚚</span>
-        <p style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.5;margin:0;">Enviamos para todo o Brasil via Sedex ou transportadora.<br><a href="https://wa.me/5514998770777?text=Olá! Gostaria de agendar uma call para planejar a logística." target="_blank" style="color:#0071E3;text-decoration:none;font-weight:500;">Agende uma call para planejarmos sua logística →</a></p>
+        <span style="font-size:22px;">🏪</span>
+        <p style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.5;margin:0;"><strong style="color:#fff;">⚠️ Valores exclusivos para lojistas.</strong> Os preços apresentados são destinados a atacadistas e revendedores. Consumidores finais consultar condições à parte.<br><span style="font-size:13px;opacity:.8;">Enviamos para todo o Brasil via Sedex ou transportadora. <a href="https://wa.me/5514998770777?text=Olá! Gostaria de agendar uma call para planejar a logística." target="_blank" style="color:#0071E3;text-decoration:none;font-weight:500;">Agende uma call →</a></span></p>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:14px 22px;margin-top:12px;text-align:left;max-width:680px;margin-left:auto;margin-right:auto;">
+        <p style="font-size:13px;color:rgba(255,255,255,0.75);line-height:1.6;margin:0;">🔍 <strong style="color:#fff;">Digite aqui o que precisa.</strong> Caso não encontre o que precisa, selecione <strong style="color:#FF9F0A;">"Fazer orçamento"</strong> e envie o pedido do carrinho preenchendo os campos necessários.</p>
       </div>
     </div>
     <iframe
@@ -1107,7 +1164,7 @@
     <div class="contact-grid">
       <div class="contact-card">
         <div class="cc-label">Email</div>
-        <div class="cc-value"><a href="mailto:iproourinhos@icloud.com">iproourinhos@icloud.com</a></div>
+        <div class="cc-value"><a href="mailto:contato@iproourinhos.com">contato@iproourinhos.com</a></div>
       </div>
       <div class="contact-card">
         <div class="cc-label">Horário</div>
